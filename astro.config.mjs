@@ -3,21 +3,22 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://serasi-parket.com',
+  site: 'https://USERNAME.github.io',
+  base: '/REPOSITORY-NAME',
   integrations: [
     tailwind({
       applyBaseStyles: false,
     }),
     sitemap({
       customPages: [
-        'https://serasi-parket.com/products/kayu-jati',
-        'https://serasi-parket.com/products/kayu-ulin',
-        'https://serasi-parket.com/products/kayu-merbau',
-        'https://serasi-parket.com/products/kayu-meranti',
-        'https://serasi-parket.com/products/kamper',
-        'https://serasi-parket.com/products/bengkirai',
-        'https://serasi-parket.com/products/sonokling',
-        'https://serasi-parket.com/products/mahoni'
+        'https://USERNAME.github.io/REPOSITORY-NAME/products/kayu-jati',
+        'https://USERNAME.github.io/REPOSITORY-NAME/products/kayu-ulin',
+        'https://USERNAME.github.io/REPOSITORY-NAME/products/kayu-merbau',
+        'https://USERNAME.github.io/REPOSITORY-NAME/products/kayu-meranti',
+        'https://USERNAME.github.io/REPOSITORY-NAME/products/kamper',
+        'https://USERNAME.github.io/REPOSITORY-NAME/products/bengkirai',
+        'https://USERNAME.github.io/REPOSITORY-NAME/products/sonokling',
+        'https://USERNAME.github.io/REPOSITORY-NAME/products/mahoni'
       ],
       filter: (page) => !page.includes('/admin') && !page.includes('/api'),
     })
