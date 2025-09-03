@@ -3,8 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://USERNAME.github.io',
-  base: '/REPOSITORY-NAME',
+  site: 'https://example.com',
   integrations: [
     tailwind({
       applyBaseStyles: false,

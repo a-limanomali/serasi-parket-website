@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const products = await getCollection('products');
@@ -48,10 +49,12 @@ const { Content } = await product.render();
         <!-- Image Gallery -->
         <div class="space-y-4">
           <div class="relative overflow-hidden rounded-lg">
-            <img
+            <Image
               id="main-image"
               src={product.data.images[0]}
               alt={product.data.name}
+              width={800}
+              height={600}
               class="w-full h-96 object-cover"
             />
             <div class="absolute top-4 left-4">
@@ -64,16 +67,15 @@ const { Content } = await product.render();
           <div class="grid grid-cols-4 gap-2">
             {
               product.data.images.map((image, index) => (
-                <button
-                  class="thumbnail overflow-hidden rounded-lg border-2 border-transparent hover:border-primary-500 transition-colors duration-300"
-                  onclick={`window.changeMainImage('${image}', event)`}
-                >
-                  <img
+                <div class="thumbnail overflow-hidden rounded-lg border-2 border-transparent hover:border-primary-500 transition-colors duration-300">
+                  <Image
                     src={image}
                     alt={`${product.data.name} ${index + 1}`}
+                    width={200}
+                    height={200}
                     class="w-full h-20 object-cover"
                   />
-                </button>
+                </div>
               ))
             }
           </div>
@@ -438,27 +440,6 @@ const { Content } = await product.render();
   <Footer />
 
   <script define:vars={{ productName: product.data.name }}>
-    // Image gallery functionality
-    function changeMainImage(imageSrc, event) {
-      const mainImage = document.getElementById('main-image');
-      if (mainImage) {
-        mainImage.src = imageSrc;
-      }
-
-      document.querySelectorAll('.thumbnail').forEach(thumb => {
-        thumb.classList.remove('border-primary-500');
-        thumb.classList.add('border-transparent');
-      });
-
-      if (event.target) {
-        const thumbnail = event.target.closest('.thumbnail');
-        if (thumbnail) {
-          thumbnail.classList.remove('border-transparent');
-          thumbnail.classList.add('border-primary-500');
-        }
-      }
-    }
-
     // Inquiry modal functionality
     const inquiryModal = document.getElementById('inquiry-modal');
     const closeInquiry = document.getElementById('close-inquiry');
@@ -516,16 +497,6 @@ const { Content } = await product.render();
     }
 
     // Make functions globally available
-    window.changeMainImage = changeMainImage;
     window.openInquiry = openInquiry;
-
-    // Set initial thumbnail state
-    document.addEventListener('DOMContentLoaded', () => {
-      const firstThumbnail = document.querySelector('.thumbnail');
-      if (firstThumbnail) {
-        firstThumbnail.classList.add('border-primary-500');
-        firstThumbnail.classList.remove('border-transparent');
-      }
-    });
   </script>
 </Layout>
