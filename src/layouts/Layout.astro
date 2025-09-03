@@ -50,7 +50,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
+    <script type="application/ld+json" is:inline>
     {
       "@context": "https://schema.org",
       "@type": "Organization",
@@ -80,9 +80,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     }
     </script>
 
+    <!-- Global Styles -->
+    <style is:global>
+      @import '../styles/global.css';
+    </style>
+
     <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" is:inline></script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -100,7 +105,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <slot />
     
     <!-- WhatsApp Floating Button -->
-    <div class="fixed bottom-6 right-6 z-50">
+    <div class="fixed bottom-6 right-6 z-50 no-print">
       <a 
         href="https://wa.me/6281234567890?text=Halo%20Serasi%20Parket,%20saya%20tertarik%20dengan%20produk%20kayu%20Anda" 
         target="_blank"
@@ -115,7 +120,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </div>
 
     <!-- Newsletter Popup -->
-    <div id="newsletter-popup" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+    <div id="newsletter-popup" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4 no-print">
       <div class="bg-white rounded-lg max-w-md w-full p-6 relative">
         <button id="close-popup" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +155,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       </div>
     </div>
 
-    <script>
+    <script is:inline>
       // Newsletter popup functionality
       function showNewsletterPopup() {
         const popup = document.getElementById('newsletter-popup');
@@ -162,30 +167,44 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         }
       }
 
-      document.getElementById('close-popup')?.addEventListener('click', function() {
-        const popup = document.getElementById('newsletter-popup');
-        popup.classList.add('hidden');
-        popup.classList.remove('flex');
-        localStorage.setItem('newsletter-shown', 'true');
-      });
-
-      document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = this.email.value;
-        
-        // Track newsletter signup
-        gtag('event', 'newsletter_signup', {
-          'method': 'popup',
-          'email': email
+      // Close popup functionality
+      const closePopupBtn = document.getElementById('close-popup');
+      if (closePopupBtn) {
+        closePopupBtn.addEventListener('click', function() {
+          const popup = document.getElementById('newsletter-popup');
+          if (popup) {
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+            localStorage.setItem('newsletter-shown', 'true');
+          }
         });
-        
-        alert('Terima kasih! Anda akan segera mendapatkan tips perawatan kayu dari kami.');
-        
-        const popup = document.getElementById('newsletter-popup');
-        popup.classList.add('hidden');
-        popup.classList.remove('flex');
-        localStorage.setItem('newsletter-shown', 'true');
-      });
+      }
+
+      // Newsletter form submission
+      const newsletterForm = document.getElementById('newsletter-form');
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const email = this.email.value;
+          
+          // Track newsletter signup
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'newsletter_signup', {
+              'method': 'popup',
+              'email': email
+            });
+          }
+          
+          alert('Terima kasih! Anda akan segera mendapatkan tips perawatan kayu dari kami.');
+          
+          const popup = document.getElementById('newsletter-popup');
+          if (popup) {
+            popup.classList.add('hidden');
+            popup.classList.remove('flex');
+            localStorage.setItem('newsletter-shown', 'true');
+          }
+        });
+      }
 
       // Show popup on page load
       document.addEventListener('DOMContentLoaded', showNewsletterPopup);
@@ -196,14 +215,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         const currentScroll = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
         if (currentScroll > maxScroll) {
           maxScroll = currentScroll;
-          if (maxScroll >= 25 && maxScroll < 50) {
-            gtag('event', 'scroll', { 'scroll_depth': 25 });
-          } else if (maxScroll >= 50 && maxScroll < 75) {
-            gtag('event', 'scroll', { 'scroll_depth': 50 });
-          } else if (maxScroll >= 75 && maxScroll < 90) {
-            gtag('event', 'scroll', { 'scroll_depth': 75 });
-          } else if (maxScroll >= 90) {
-            gtag('event', 'scroll', { 'scroll_depth': 90 });
+          if (typeof gtag !== 'undefined') {
+            if (maxScroll >= 25 && maxScroll < 50) {
+              gtag('event', 'scroll', { 'scroll_depth': 25 });
+            } else if (maxScroll >= 50 && maxScroll < 75) {
+              gtag('event', 'scroll', { 'scroll_depth': 50 });
+            } else if (maxScroll >= 75 && maxScroll < 90) {
+              gtag('event', 'scroll', { 'scroll_depth': 75 });
+            } else if (maxScroll >= 90) {
+              gtag('event', 'scroll', { 'scroll_depth': 90 });
+            }
           }
         }
       });
