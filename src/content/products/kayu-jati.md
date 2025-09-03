@@ -1,0 +1,84 @@
+---
+name: 'Kayu Jati Premium'
+scientificName: 'Tectona grandis'
+description: 'Raja kayu Indonesia dengan reputasi dunia. Kayu jati premium kami dipilih dari pohon berusia minimal 40 tahun dengan kualitas grade A. Natural oil content tinggi memberikan ketahanan luar biasa terhadap cuaca, rayap, dan jamur.'
+images:
+  - '/images/products/kayu-jati-main.jpg'
+  - '/images/products/kayu-jati-grain.jpg'
+  - '/images/products/kayu-jati-finish.jpg'
+  - '/images/products/kayu-jati-application.jpg'
+specifications:
+  'Nama Ilmiah': 'Tectona grandis'
+  'Density': '600-700 kg/m³'
+  'Moisture Content': '12-15%'
+  'Bending Strength': '98 MPa'
+  'Compressive Strength': '54 MPa'
+  'Hardness': '4.0 kN'
+  'Shrinkage Radial': '2.5%'
+  'Shrinkage Tangential': '5.8%'
+  'Natural Durability': 'Class I (Very Durable)'
+features:
+  - title: 'Natural Oil Content'
+    description: 'Mengandung minyak alami yang melindungi dari rayap, jamur, dan cuaca ekstrem'
+  - title: 'Golden Brown Color'
+    description: 'Warna emas kecoklatan yang khas dan semakin indah seiring waktu'
+  - title: 'Straight Grain Pattern'
+    description: 'Pola serat lurus dan halus yang memberikan tampilan premium'
+  - title: 'Dimensionally Stable'
+    description: 'Minim penyusutan dan ekspansi, cocok untuk aplikasi presisi'
+  - title: 'Easy to Work'
+    description: 'Mudah dikerjakan dengan tools manual maupun mesin'
+  - title: 'Excellent Finish'
+    description: 'Menerima finishing dengan hasil sempurna dan tahan lama'
+applications:
+  - category: 'Premium Flooring'
+    items:
+      [
+        'Parquet Solid',
+        'Engineered Flooring',
+        'Luxury Vinyl Plank Base',
+        'Herringbone Pattern',
+      ]
+  - category: 'Marine & Outdoor'
+    items:
+      [
+        'Boat Decking',
+        'Marine Furniture',
+        'Garden Furniture',
+        'Outdoor Pavilion',
+      ]
+  - category: 'Fine Furniture'
+    items:
+      [
+        'Dining Sets',
+        'Bedroom Sets',
+        'Office Furniture',
+        'Antique Reproduction',
+      ]
+  - category: 'Architectural'
+    items:
+      [
+        'Door & Window Frames',
+        'Wall Paneling',
+        'Ceiling Treatment',
+        'Decorative Elements',
+      ]
+grades:
+  - name: 'Grade A Premium'
+    description: 'Kayu jati terbaik tanpa cacat, untuk aplikasi furniture mewah dan flooring premium'
+    characteristics:
+      ['No defects', 'Straight grain', 'Uniform color', 'Premium finishing']
+  - name: 'Grade B Standard'
+    description: 'Kualitas baik dengan cacat minimal, cocok untuk aplikasi umum dan konstruksi'
+    characteristics:
+      ['Minor defects', 'Good grain', 'Consistent quality', 'Value for money']
+  - name: 'Grade C Construction'
+    description: 'Grade konstruksi dengan kekuatan tetap optimal, untuk struktur dan utility'
+    characteristics:
+      [
+        'Functional quality',
+        'Structural strength',
+        'Cost effective',
+        'Reliable performance',
+      ]
+---

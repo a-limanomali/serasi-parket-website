@@ -7,7 +7,7 @@ module.exports = {
         'http://localhost:4321/about',
         'http://localhost:4321/contact',
         'http://localhost:4321/products',
-        'http://localhost:4321/products/kayu-jati'
+        'http://localhost:4321/products/kayu-jati',
       ],
       numberOfRuns: 3,
     },

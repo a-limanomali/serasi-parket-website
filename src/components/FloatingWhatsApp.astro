@@ -1,0 +1,54 @@
+---
+
+---
+
+<a
+  href="https://wa.me/6281283135295"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contact us on WhatsApp"
+  id="whatsapp-fab"
+  class="fixed bottom-6 right-6 z-50 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="28"
+    height="28"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    class="w-7 h-7"
+  >
+    <path
+      d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.89-5.451 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.001.004 4.274-1.284zm-2.97-3.019c-.273-.136-.935-.464-1.082-.515-.149-.052-.257-.081-.386.081-.129.162-.486.615-.594.737-.108.121-.217.136-.386.081-.17-.052-1.082-.379-2.06-1.272-.76-.699-1.279-1.561-1.419-1.823-.14-.262-.031-.399.081-.514.1-.1.217-.262.324-.39.108-.129.145-.217.217-.363.072-.146.035-.262-.016-.399-.052-.136-.386-1.082-.533-1.479-.146-.397-.293-.335-.404-.335-.111 0-.244-.016-.352-.016a.6.6 0 0 0-.429.195c-.145.162-.533.524-.533 1.271 0 .748.549 1.479.621 1.592.072.112 1.023 1.566 2.479 2.203.352.152.621.242.822.313.329.118.638.102.869.069.262-.036.935-.378 1.063-.737.129-.359.129-.662.094-.737-.035-.071-.144-.118-.303-.187z"
+    ></path>
+  </svg>
+</a>
+
+<script>
+  const fab = document.getElementById('whatsapp-fab');
+  if (fab) {
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        fab.classList.add('scale-0');
+        fab.classList.remove('scale-100');
+      } else {
+        // Scrolling up
+        fab.classList.add('scale-100');
+        fab.classList.remove('scale-0');
+      }
+      lastScrollY = currentScrollY;
+    });
+  }
+</script>
+
+<style>
+  #whatsapp-fab {
+    transition-property: transform, background-color;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+</style>

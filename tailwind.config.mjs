@@ -21,8 +21,8 @@ export default {
           light: '#f5f1eb',
           medium: '#d4a574',
           dark: '#8b4513',
-          charcoal: '#2c2c2c'
-        }
+          charcoal: '#2c2c2c',
+        },
       },
       fontFamily: {
         display: ['Playfair Display', 'serif'],
@@ -31,7 +31,7 @@ export default {
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
         'slide-up': 'slideUp 0.8s ease-out',
-        'float': 'float 3s ease-in-out infinite',
+        float: 'float 3s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -45,9 +45,9 @@ export default {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
-        }
-      }
+        },
+      },
     },
   },
   plugins: [],
-}
+};

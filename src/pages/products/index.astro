@@ -390,14 +390,17 @@ const tags = [
 
   <script>
     // Filter functionality
-    const searchInput = document.getElementById('search-products');
-    const categoryFilter = document.getElementById('category-filter');
-    const applicationFilter = document.getElementById('application-filter');
+    const searchInput = document.getElementById('search-products') as HTMLInputElement | null;
+    const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement | null;
+    const applicationFilter = document.getElementById('application-filter') as HTMLSelectElement | null;
     const productsGrid = document.getElementById('products-grid');
     const resultsCount = document.getElementById('results-count');
     const noResults = document.getElementById('no-results');
 
     function filterProducts() {
+      if (!searchInput || !categoryFilter || !applicationFilter || !productsGrid || !resultsCount || !noResults) {
+        return;
+      }
       const searchTerm = searchInput.value.toLowerCase();
       const selectedCategory = categoryFilter.value;
       const selectedApplication = applicationFilter.value.toLowerCase();
@@ -406,23 +409,24 @@ const tags = [
       let visibleCount = 0;
 
       productCards.forEach(card => {
-        const productName = card.dataset.name;
-        const productCategory = card.dataset.category;
-        const productApplications = card.dataset.applications;
+        const htmlCard = card as HTMLElement;
+        const productName = htmlCard.dataset.name;
+        const productCategory = htmlCard.dataset.category;
+        const productApplications = htmlCard.dataset.applications;
 
-        const matchesSearch = searchTerm === '' || productName.includes(searchTerm);
+        const matchesSearch = !searchTerm || (productName && productName.includes(searchTerm));
         const matchesCategory = selectedCategory === 'Semua Kategori' || productCategory === selectedCategory;
-        const matchesApplication = selectedApplication === 'semua aplikasi' || productApplications.includes(selectedApplication);
+        const matchesApplication = selectedApplication === 'semua aplikasi' || (productApplications && productApplications.includes(selectedApplication));
 
         if (matchesSearch && matchesCategory && matchesApplication) {
-          card.style.display = 'block';
+          htmlCard.style.display = 'block';
           visibleCount++;
         } else {
-          card.style.display = 'none';
+          htmlCard.style.display = 'none';
         }
       });
 
-      resultsCount.textContent = visibleCount;
+      resultsCount.textContent = visibleCount.toString();
       
       if (visibleCount === 0) {
         noResults.classList.remove('hidden');
@@ -442,45 +446,51 @@ const tags = [
     }
 
     function resetFilters() {
-      searchInput.value = '';
-      categoryFilter.value = 'Semua Kategori';
-      applicationFilter.value = 'Semua Aplikasi';
-      filterProducts();
+      if (searchInput && categoryFilter && applicationFilter) {
+        searchInput.value = '';
+        categoryFilter.value = 'Semua Kategori';
+        applicationFilter.value = 'Semua Aplikasi';
+        filterProducts();
+      }
     }
 
     // Event listeners
-    searchInput.addEventListener('input', filterProducts);
-    categoryFilter.addEventListener('change', filterProducts);
-    applicationFilter.addEventListener('change', filterProducts);
+    searchInput?.addEventListener('input', filterProducts);
+    categoryFilter?.addEventListener('change', filterProducts);
+    applicationFilter?.addEventListener('change', filterProducts);
 
     // Inquiry modal functionality
     const inquiryModal = document.getElementById('inquiry-modal');
     const closeInquiry = document.getElementById('close-inquiry');
-    const inquiryForm = document.getElementById('inquiry-form');
-    const inquiryProduct = document.getElementById('inquiry-product');
+    const inquiryForm = document.getElementById('inquiry-form') as HTMLFormElement | null;
+    const inquiryProduct = document.getElementById('inquiry-product') as HTMLInputElement | null;
 
-    function openInquiry(productName) {
-      inquiryProduct.value = productName;
-      inquiryModal.classList.remove('hidden');
-      inquiryModal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
+    function openInquiry(productName: string) {
+      if (inquiryProduct && inquiryModal) {
+        inquiryProduct.value = productName;
+        inquiryModal.classList.remove('hidden');
+        inquiryModal.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     function closeInquiryModal() {
-      inquiryModal.classList.add('hidden');
-      inquiryModal.classList.remove('flex');
-      document.body.style.overflow = 'auto';
+      if (inquiryModal) {
+        inquiryModal.classList.add('hidden');
+        inquiryModal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
     }
 
-    closeInquiry.addEventListener('click', closeInquiryModal);
+    closeInquiry?.addEventListener('click', closeInquiryModal);
     
-    inquiryModal.addEventListener('click', (e) => {
+    inquiryModal?.addEventListener('click', (e) => {
       if (e.target === inquiryModal) {
         closeInquiryModal();
       }
     });
 
-    inquiryForm.addEventListener('submit', (e) => {
+    inquiryForm?.addEventListener('submit', (e) => {
       e.preventDefault();
       
       const formData = new FormData(inquiryForm);

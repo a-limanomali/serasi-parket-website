@@ -21,6 +21,7 @@ npm install -g bun
 ### Backend Setup
 
 1. Navigate to the backend directory:
+
    ```bash
    cd backend
    ```
@@ -32,13 +33,10 @@ npm install -g bun
 
 The backend will be available at the URL shown in your terminal (typically `http://localhost:4000`).
 
-
-
-
-
 ## Deployment
 
 ### Self-hosting
+
 See the [self-hosting instructions](https://encore.dev/docs/self-host/docker-build) for how to use encore build docker to create a Docker image and
 configure it.
 
@@ -101,6 +99,3 @@ git push origin main
 - [Deployment Guide](https://encore.dev/docs/platform/deploy/deploying)
 - [GitHub Integration](https://encore.dev/docs/platform/integrations/github)
 - [Encore Cloud Dashboard](https://app.encore.dev)
-
-
-

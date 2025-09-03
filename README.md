@@ -5,6 +5,7 @@ Website company profile untuk **Serasi Parket** - supplier parquet kayu premium 
 ## 🌟 Features
 
 ### ✅ Technical Excellence
+
 - **Astro.js** - Modern static site generator dengan performance terbaik
 - **Tailwind CSS** - Utility-first CSS framework untuk design yang konsisten
 - **TypeScript** - Type safety dan better developer experience
@@ -13,6 +14,7 @@ Website company profile untuk **Serasi Parket** - supplier parquet kayu premium 
 - **Performance Optimized** - Lazy loading, image optimization, code splitting
 
 ### ✅ Business Features
+
 - **Product Catalog** - 8 jenis kayu premium dengan detail lengkap
 - **Interactive Filters** - Filter by category, application, search
 - **Inquiry System** - Lead generation forms dengan tracking
@@ -23,6 +25,7 @@ Website company profile untuk **Serasi Parket** - supplier parquet kayu premium 
 - **Schema.org Markup** - Rich snippets untuk search engines
 
 ### ✅ Content Management
+
 - **About Page** - Company story, vision, mission, team, values
 - **Product Pages** - Detailed specs, applications, grades, galleries
 - **Blog Ready** - Structure siap untuk content marketing
@@ -90,15 +93,18 @@ serasi-parket-website/
 ## 🎨 Design System
 
 ### Colors
+
 - **Primary**: Warm brown tones (#c46831 - #391b10)
 - **Wood**: Natural wood colors (light, medium, dark, charcoal)
 - **Accent**: Supporting colors untuk highlights
 
 ### Typography
+
 - **Display**: Playfair Display (headings)
 - **Body**: Inter (content)
 
 ### Components
+
 - Responsive navigation dengan dropdowns
 - Product cards dengan hover effects
 - Interactive image galleries
@@ -108,6 +114,7 @@ serasi-parket-website/
 ## 🔧 Development
 
 ### Code Quality
+
 ```bash
 # Lint code
 npm run lint
@@ -123,6 +130,7 @@ npm run build
 ```
 
 ### Git Workflow
+
 1. Create feature branch: `git checkout -b feature/nama-fitur`
 2. Make changes and commit: `git commit -m "feat: tambah fitur baru"`
 3. Push branch: `git push origin feature/nama-fitur`
@@ -133,6 +141,7 @@ npm run build
 ## 🚀 CI/CD Pipeline
 
 ### GitHub Actions Workflow
+
 - **Test & Lint**: ESLint, Prettier, Type checking
 - **Build**: Production build dengan optimizations
 - **Security**: npm audit untuk vulnerabilities
@@ -141,6 +150,7 @@ npm run build
 - **Deploy Production**: Auto deploy ke production dari `main`
 
 ### Deployment Environments
+
 - **Development**: Local development server
 - **Staging**: Vercel preview deployments dari `develop`
 - **Production**: Vercel production dari `main`
@@ -148,15 +158,17 @@ npm run build
 ## 📊 Analytics & Tracking
 
 ### Google Analytics 4 Setup
+
 ```javascript
 gtag('config', 'GA_MEASUREMENT_ID', {
   page_title: document.title,
   page_location: window.location.href,
-  content_group1: 'Wood Products'
+  content_group1: 'Wood Products',
 });
 ```
 
 ### Custom Events
+
 - Newsletter signups
 - Product inquiries
 - Phone/WhatsApp clicks
@@ -167,19 +179,23 @@ gtag('config', 'GA_MEASUREMENT_ID', {
 ## 🛠 Customization
 
 ### Adding New Products
+
 1. Add product data in `/src/pages/products/index.astro`
 2. Create detail page `/src/pages/products/new-product.astro`
 3. Add product images in `/public/images/products/`
 4. Update sitemap in `astro.config.mjs`
 
 ### Modifying Contact Info
+
 Update contact details in:
+
 - `/src/components/Header.astro`
 - `/src/components/Footer.astro`
 - `/src/pages/contact.astro`
 - `/src/layouts/Layout.astro` (Schema.org)
 
 ### Styling Changes
+
 - Global styles: `/src/styles/global.css`
 - Component styles: Inline Tailwind classes
 - Custom animations: Defined in global.css
@@ -187,12 +203,14 @@ Update contact details in:
 ## 📱 Performance & SEO
 
 ### Lighthouse Scores Target
+
 - **Performance**: 90+
 - **Accessibility**: 95+
 - **Best Practices**: 95+
 - **SEO**: 100
 
 ### Optimizations
+
 - Image lazy loading dan optimization
 - CSS code splitting
 - JavaScript tree shaking
@@ -203,6 +221,7 @@ Update contact details in:
 ## 🔒 Security
 
 ### Security Headers
+
 ```json
 {
   "X-Content-Type-Options": "nosniff",
@@ -213,6 +232,7 @@ Update contact details in:
 ```
 
 ### Best Practices
+
 - npm audit untuk dependencies
 - CSP headers untuk XSS protection
 - Secure cookie settings
@@ -221,6 +241,7 @@ Update contact details in:
 ## 🚀 Deployment
 
 ### Vercel Deployment
+
 ```bash
 # Install Vercel CLI
 npm i -g vercel
@@ -233,13 +254,16 @@ vercel --prod
 ```
 
 ### Environment Variables
+
 Set di Vercel dashboard:
+
 - `GA_MEASUREMENT_ID`: Google Analytics ID
 - `VERCEL_TOKEN`: Deployment token
 - `VERCEL_ORG_ID`: Organization ID
 - `VERCEL_PROJECT_ID`: Project ID
 
 ### Post-Deployment Checklist
+
 - [ ] Update Google Analytics ID
 - [ ] Test all contact forms
 - [ ] Verify WhatsApp links
@@ -251,12 +275,14 @@ Set di Vercel dashboard:
 ## 📞 Support & Maintenance
 
 ### Monitoring
+
 - Vercel Analytics untuk performance
 - Google Search Console untuk SEO
 - Google Analytics untuk user behavior
 - Lighthouse CI untuk continuous monitoring
 
 ### Maintenance Tasks
+
 - Monthly dependency updates
 - Quarterly security audits
 - Performance optimization reviews
@@ -265,4 +291,4 @@ Set di Vercel dashboard:
 ---
 
 **Serasi Parket** - Premium Wood Supplier Indonesia  
-*Website built with ❤️ using Astro.js*
+_Website built with ❤️ using Astro.js_
