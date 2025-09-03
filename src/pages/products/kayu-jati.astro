@@ -82,4 +82,380 @@ const product = {
     {
       name: 'Grade C Construction',
       description: 'Grade konstruksi dengan kekuatan tetap optimal, untuk struktur dan utility',
-      characteristics: ['Functional quality
+      characteristics: ['Functional quality', 'Structural strength', 'Cost effective', 'Reliable performance']
+    }
+  ]
+};
+---
+
+<Layout 
+  title="Kayu Jati Premium - Serasi Parket" 
+  description="Kayu jati premium grade A dari Indonesia. Natural oil content tinggi, tahan rayap dan cuaca. Ideal untuk flooring mewah, furniture premium, dan aplikasi marine."
+  keywords="kayu jati, jati premium, teak wood, flooring jati, furniture jati, kayu teak Indonesia"
+>
+  <Header />
+  
+  <!-- Breadcrumb -->
+  <nav class="bg-gray-50 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ol class="flex items-center space-x-2 text-sm">
+        <li><a href="/" class="text-gray-500 hover:text-primary-600">Beranda</a></li>
+        <li class="text-gray-400">/</li>
+        <li><a href="/products" class="text-gray-500 hover:text-primary-600">Produk</a></li>
+        <li class="text-gray-400">/</li>
+        <li class="text-gray-900 font-medium">Kayu Jati</li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Product Hero -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Image Gallery -->
+        <div class="space-y-4">
+          <div class="relative overflow-hidden rounded-lg">
+            <img 
+              id="main-image"
+              src={product.images[0]} 
+              alt={product.name}
+              class="w-full h-96 object-cover"
+            />
+            <div class="absolute top-4 left-4">
+              <span class="bg-primary-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Premium</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-4 gap-2">
+            {product.images.map((image, index) => (
+              <button 
+                class="thumbnail overflow-hidden rounded-lg border-2 border-transparent hover:border-primary-500 transition-colors duration-300"
+                onclick={`changeMainImage('${image}')`}
+              >
+                <img 
+                  src={image} 
+                  alt={`${product.name} ${index + 1}`}
+                  class="w-full h-20 object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="space-y-6">
+          <div>
+            <h1 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+              {product.name}
+            </h1>
+            <p class="text-lg text-gray-600 italic mb-4">{product.scientificName}</p>
+            <p class="text-gray-700 leading-relaxed">
+              {product.description}
+            </p>
+          </div>
+
+          <!-- Features -->
+          <div>
+            <h3 class="font-display text-xl font-semibold text-gray-900 mb-4">Keunggulan Utama</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {product.features.map(feature => (
+                <div class="flex items-start space-x-3">
+                  <div class="flex-shrink-0 w-2 h-2 bg-primary-500 rounded-full mt-2"></div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900">{feature.title}</h4>
+                    <p class="text-sm text-gray-600">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button 
+              onclick="openInquiry()"
+              class="flex-1 bg-primary-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-300"
+            >
+              Minta Penawaran
+            </button>
+            <a 
+              href="https://wa.me/6281234567890?text=Halo%20Serasi%20Parket,%20saya%20tertarik%20dengan%20Kayu%20Jati%20Premium" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-1 border-2 border-primary-600 text-primary-600 py-3 px-6 rounded-lg font-semibold text-center hover:bg-primary-50 transition-colors duration-300"
+            >
+              Chat WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specifications -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">Spesifikasi Teknis</h2>
+      
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+          {Object.entries(product.specifications).map(([key, value], index) => (
+            <div class={`p-6 border-b border-gray-200 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}>
+              <div class="font-semibold text-gray-900 mb-1">{key}</div>
+              <div class="text-gray-600">{value}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">Aplikasi & Penggunaan</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {product.applications.map(application => (
+          <div class="bg-gray-50 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
+            <h3 class="font-display text-xl font-semibold text-gray-900 mb-4">{application.category}</h3>
+            <ul class="space-y-2">
+              {application.items.map(item => (
+                <li class="flex items-center text-gray-600">
+                  <svg class="w-4 h-4 text-primary-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Grades -->
+  <section class="py-16 bg-gradient-to-br from-primary-50 to-wood-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">Grade & Kualitas</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {product.grades.map((grade, index) => (
+          <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center mb-4">
+              <div class={`w-3 h-3 rounded-full mr-3 ${
+                index === 0 ? 'bg-yellow-500' : 
+                index === 1 ? 'bg-blue-500' : 
+                'bg-green-500'
+              }`}></div>
+              <h3 class="font-display text-xl font-semibold text-gray-900">{grade.name}</h3>
+            </div>
+            <p class="text-gray-600 mb-4">{grade.description}</p>
+            <div class="space-y-2">
+              {grade.characteristics.map(char => (
+                <div class="flex items-center text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-primary-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {char}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-3xl font-bold text-gray-900 mb-8 text-center">Produk Terkait</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="/products/kayu-ulin" class="group">
+          <div class="bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <img src="/images/products/kayu-ulin.jpg" alt="Kayu Ulin" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Kayu Ulin</h3>
+              <p class="text-sm text-gray-600">Ironwood legendaris dengan ketahanan luar biasa</p>
+            </div>
+          </div>
+        </a>
+        
+        <a href="/products/kayu-merbau" class="group">
+          <div class="bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <img src="/images/products/kayu-merbau.jpg" alt="Kayu Merbau" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Kayu Merbau</h3>
+              <p class="text-sm text-gray-600">Exotic hardwood dengan grain patterns indah</p>
+            </div>
+          </div>
+        </a>
+        
+        <a href="/products/sonokling" class="group">
+          <div class="bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <img src="/images/products/sonokling.jpg" alt="Sonokling" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="p-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Sonokling</h3>
+              <p class="text-sm text-gray-600">Premium rosewood dengan luxury appearance</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry Modal -->
+  <div id="inquiry-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-lg max-w-md w-full p-6 relative">
+      <button id="close-inquiry" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      
+      <h3 class="text-2xl font-display font-semibold text-gray-900 mb-4">
+        Minta Penawaran Kayu Jati
+      </h3>
+      
+      <form id="inquiry-form" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap *</label>
+          <input 
+            type="text" 
+            name="name" 
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+          <input 
+            type="email" 
+            name="email" 
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Nomor Telepon</label>
+          <input 
+            type="tel" 
+            name="phone" 
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          />
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Grade yang Diinginkan</label>
+          <select 
+            name="grade" 
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          >
+            <option value="">Pilih Grade</option>
+            <option value="Grade A Premium">Grade A Premium</option>
+            <option value="Grade B Standard">Grade B Standard</option>
+            <option value="Grade C Construction">Grade C Construction</option>
+          </select>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Kebutuhan & Spesifikasi</label>
+          <textarea 
+            name="requirements" 
+            rows="3"
+            placeholder="Deskripsikan kebutuhan Anda: aplikasi, dimensi, quantity, timeline, dll."
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+          ></textarea>
+        </div>
+        
+        <button 
+          type="submit"
+          class="w-full bg-primary-600 text-white py-2 px-4 rounded-lg hover:bg-primary-700 transition-colors duration-300"
+        >
+          Kirim Permintaan Penawaran
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <Footer />
+
+  <script>
+    // Image gallery functionality
+    function changeMainImage(imageSrc) {
+      document.getElementById('main-image').src = imageSrc;
+      
+      // Update thumbnail active state
+      document.querySelectorAll('.thumbnail').forEach(thumb => {
+        thumb.classList.remove('border-primary-500');
+        thumb.classList.add('border-transparent');
+      });
+      
+      event.target.closest('.thumbnail').classList.remove('border-transparent');
+      event.target.closest('.thumbnail').classList.add('border-primary-500');
+    }
+
+    // Inquiry modal functionality
+    const inquiryModal = document.getElementById('inquiry-modal');
+    const closeInquiry = document.getElementById('close-inquiry');
+    const inquiryForm = document.getElementById('inquiry-form');
+
+    function openInquiry() {
+      inquiryModal.classList.remove('hidden');
+      inquiryModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeInquiryModal() {
+      inquiryModal.classList.add('hidden');
+      inquiryModal.classList.remove('flex');
+      document.body.style.overflow = 'auto';
+    }
+
+    closeInquiry.addEventListener('click', closeInquiryModal);
+    
+    inquiryModal.addEventListener('click', (e) => {
+      if (e.target === inquiryModal) {
+        closeInquiryModal();
+      }
+    });
+
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(inquiryForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const phone = formData.get('phone');
+      const grade = formData.get('grade');
+      const requirements = formData.get('requirements');
+
+      // Track inquiry submission
+      gtag('event', 'generate_lead', {
+        'currency': 'IDR',
+        'value': 0,
+        'product': 'Kayu Jati Premium',
+        'method': 'product_detail_inquiry'
+      });
+
+      alert(`Terima kasih ${name}! Permintaan penawaran Kayu Jati Premium Anda telah diterima. Tim kami akan segera menghubungi Anda.`);
+      
+      inquiryForm.reset();
+      closeInquiryModal();
+    });
+
+    // Make functions globally available
+    window.changeMainImage = changeMainImage;
+    window.openInquiry = openInquiry;
+
+    // Set initial thumbnail state
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.thumbnail').classList.add('border-primary-500');
+      document.querySelector('.thumbnail').classList.remove('border-transparent');
+    });
+  </script>
+</Layout>
