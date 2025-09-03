@@ -5,3 +5,7 @@ encore.gen.cue
 node_modules
 /encore.gen
 .env
+
+# Build outputs
+dist/
+.astro/
