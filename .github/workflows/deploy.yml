@@ -89,7 +89,10 @@ jobs:
         run: pnpm install
 
       - name: Build project
-        run: pnpm build
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io
+          BASE_PATH: /${{ github.event.repository.name }}
+        run: pnpm exec astro build --site $SITE_URL --base $BASE_PATH
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -108,3 +111,14 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  post-deploy-validation:
+    name: Post-Deploy Validation
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Check deployed site
+        run: |
+          echo "Checking URL: ${{ needs.deploy.outputs.page_url }}"
+          curl -s --fail --retry 5 --retry-delay 10 ${{ needs.deploy.outputs.page_url }}

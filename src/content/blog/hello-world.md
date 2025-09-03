@@ -1,7 +1,7 @@
 ---
 title: 'Hello World'
 description: 'This is my first blog post!'
-publishDate: '2025-09-03'
+publishDate: 2025-09-03
 author: 'Jules'
 ---
 

@@ -2,4 +2,3 @@ dist
 node_modules
 pnpm-lock.yaml
 src/pages/products/index.astro
-src/pages/products/kayu-jati.astro

@@ -113,7 +113,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <body class="font-body text-gray-900 bg-wood-light">
     <slot />
 
-    <FloatingWhatsApp />
+    <Fragment client:visible>
+      <FloatingWhatsApp />
+    </Fragment>
 
     <!-- Newsletter Popup -->
     <div
