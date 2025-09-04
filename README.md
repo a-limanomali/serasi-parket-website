@@ -38,6 +38,9 @@ Website company profile untuk **Serasi Parket** - supplier parquet kayu premium 
 # Install dependencies
 npm install
 
+# Setup environment variables
+cp .env.example .env # lalu isi PUBLIC_GA_ID
+
 # Start development server
 npm run dev
 
@@ -160,7 +163,7 @@ npm run build
 ### Google Analytics 4 Setup
 
 ```javascript
-gtag('config', 'GA_MEASUREMENT_ID', {
+gtag('config', import.meta.env.PUBLIC_GA_ID, {
   page_title: document.title,
   page_location: window.location.href,
   content_group1: 'Wood Products',
@@ -257,7 +260,7 @@ vercel --prod
 
 Set di Vercel dashboard:
 
-- `GA_MEASUREMENT_ID`: Google Analytics ID
+- `PUBLIC_GA_ID`: Google Analytics ID
 - `VERCEL_TOKEN`: Deployment token
 - `VERCEL_ORG_ID`: Organization ID
 - `VERCEL_PROJECT_ID`: Project ID

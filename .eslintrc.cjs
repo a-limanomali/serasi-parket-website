@@ -7,7 +7,7 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    '@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:astro/recommended',
   ],
   parser: '@typescript-eslint/parser',
@@ -16,6 +16,11 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
+  globals: {
+    gtag: 'readonly',
+    dataLayer: 'readonly',
+    GA_ID: 'readonly',
+  },
   rules: {
     // Disable some rules that might conflict with Astro
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
@@ -23,6 +28,7 @@ module.exports = {
     'no-console': 'warn',
     'prefer-const': 'error',
     'no-var': 'error',
+    '@typescript-eslint/triple-slash-reference': 'off',
   },
   overrides: [
     {

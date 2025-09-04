@@ -1,5 +1,5 @@
 ---
-
+import { Image } from 'astro:assets';
 ---
 
 <footer class="bg-wood-charcoal text-white">
@@ -9,10 +9,12 @@
       <!-- Company Info -->
       <div class="space-y-4">
         <div class="flex items-center space-x-2">
-          <img
+          <Image
             class="h-8 w-auto"
             src="/images/logo-white.png"
             alt="Serasi Parket"
+            width={120}
+            height={40}
           />
           <span class="font-display font-bold text-xl">Serasi Parket</span>
         </div>
