@@ -3,8 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://a-limanomali.github.io',
-  base: '/serasi-parket-website',
+  site: 'https://serasi-parket.com',
+  base: '/',
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -16,6 +16,9 @@ export default defineConfig({
   build: {
     assets: 'assets',
     inlineStylesheets: 'auto',
+  },
+  image: {
+    formats: ['avif', 'webp'],
   },
   compressHTML: true,
   output: 'static',

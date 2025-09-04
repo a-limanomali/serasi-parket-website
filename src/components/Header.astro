@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 const currentPath = Astro.url.pathname;
 ---
 
@@ -11,7 +12,7 @@ const currentPath = Astro.url.pathname;
       <!-- Logo -->
       <div class="flex-shrink-0">
         <a href="/" class="flex items-center space-x-2">
-          <img class="h-10 w-auto" src="/images/logo.png" alt="Serasi Parket" />
+          <Image src="/images/logo.png" alt="Serasi Parket" class="h-10 w-auto" width={120} height={40} />
           <span class="font-display font-bold text-xl text-primary-800"
             >Serasi Parket</span
           >
@@ -252,7 +253,7 @@ const currentPath = Astro.url.pathname;
   if (header) {
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
-      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
       if (scrollTop > lastScrollTop && scrollTop > 100) {
         // Scrolling down

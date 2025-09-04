@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
 ---
 
 <Layout
@@ -75,11 +76,13 @@ import Footer from '../components/Footer.astro';
           </div>
         </div>
         <div class="relative">
-          <img
+          <Image
             src="/images/about/company-story.jpg"
             alt="Serasi Parket Company Story"
             class="rounded-lg shadow-xl"
             loading="lazy"
+            width={800}
+            height={600}
           />
           <div
             class="absolute -bottom-6 -right-6 bg-primary-600 text-white p-6 rounded-lg shadow-lg"

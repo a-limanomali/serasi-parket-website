@@ -15,6 +15,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
 ---
 
 <!doctype html>
@@ -90,25 +91,29 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </style>
 
     <!-- Google Analytics 4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
-      is:inline></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID', {
-        page_title: document.title,
-        page_location: window.location.href,
-        content_group1: 'Wood Products',
-        custom_map: {
-          custom_parameter_1: 'page_category',
-        },
-      });
-    </script>
+    {GA_ID && (
+      <Fragment>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          is:inline></script>
+        <script is:inline>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', GA_ID, {
+            page_title: document.title,
+            page_location: window.location.href,
+            content_group1: 'Wood Products',
+            custom_map: {
+              custom_parameter_1: 'page_category',
+            },
+          });
+        </script>
+      </Fragment>
+    )}
   </head>
   <body class="font-body text-gray-900 bg-wood-light">
     <slot />
